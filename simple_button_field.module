@@ -1,10 +1,32 @@
 <?php
 
 /**
+ * Implements hook_field_info().
+ */
+function simple_button_field_field_info() {
+  return array(
+    'simple_button_field_basic' => array(
+      'label' => t('Simple button'),
+      'description' => t('Simple button with basic functionality'),
+      'default_widget' => 'simple_button_field_basic_button',
+      'default_formatter' => 'simple_button_field_basic_button',
+    ),
+  );
+}
+
+function simple_button_field_is_empty($item, $field) {
+}
+
+/**
  * Implements hook_field_widget_info().
  */
 function simple_button_field_field_widget_info() {
-
+  return array(
+    'simple_button_field_basic_field' => array(
+      'label' => t('Basic button'),
+      'field types' => array('simple_button_field_basic'),
+    ),
+  );
 }
 
 /**
@@ -18,7 +40,12 @@ function simple_button_field_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_formatter_info().
  */
 function simple_button_field_field_formatter_info() {
-
+  return array(
+    'simple_button_field_basic_default' => array(
+      'label' => t('Basic button'),
+      'field types' => array('simple_button_field_basic'),
+    ),
+  );
 }
 
 /**
