@@ -4,5 +4,11 @@
  * Implements function hook_field_schema().
  */
 function simple_button_field_field_schema($field) {
-
+  if($field['type'] == 'simple_button_field_basic_button') {
+    $schema['columns']['simple_button_basic_button_id'] = array(
+      'type' => 'int',
+      'not null' => false,
+    );
+    return $schema;
+  }
 }
