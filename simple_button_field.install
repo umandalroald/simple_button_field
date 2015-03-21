@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements function hook_field_schema().
+ */
+function simple_button_field_field_schema($field) {
+
+}

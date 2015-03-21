@@ -1,0 +1,4 @@
+name = Simple Button Field
+description = A simple button field.
+version = 7.x-0.1
+core = 7.x
