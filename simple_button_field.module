@@ -14,9 +14,6 @@ function simple_button_field_field_info() {
   );
 }
 
-function simple_button_field_is_empty($item, $field) {
-}
-
 /**
  * Implements hook_field_widget_info().
  */
@@ -34,6 +31,25 @@ function simple_button_field_field_widget_info() {
  */
 function simple_button_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
 
+  switch ($instance['widget']['type']) {
+    case 'simple_button_field_basic_field':
+      $element['simple_button_basic'] = array(
+        '#type' => 'button',
+        '#value' => t('Button Text'),
+      );
+      break;
+  }
+  return $element;
+}
+
+/**
+* Implements hook_field_is_empty().
+*/
+function simple_button_field_field_is_empty($item, $field) {
+  if (empty($item['simple_button_basic'])) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**
@@ -52,5 +68,15 @@ function simple_button_field_field_formatter_info() {
  * Implements hook_field_formatter_view().
  */
 function simple_button_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'simple_button_field_basic_default':
 
+      break;
+    default:
+      break;
+  }
+
+  return $element;
 }
+
